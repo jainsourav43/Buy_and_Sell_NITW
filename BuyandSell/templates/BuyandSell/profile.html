@@ -1,0 +1,63 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  {%load static%}
+  <title>Profile Page</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:100,400,300,500,700' rel='stylesheet' type='text/css'>
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href = "{% static 'BuyandSell/style.css' %}">
+</head>
+
+<body>
+
+	<div class = "my-container">
+		<div class = "style_prevu_kit card-container">
+				{% for i in obj2 %}
+				<img src = "{{i.image.url}}" class ="card-img" />
+				<div class = "card-details">
+					Name : &nbsp; {{i.name}}
+				</div>
+				<div class = "card-details">
+					Contact No. : &nbsp; {{i.contactno}}
+				</div>
+				<div class = "card-details">
+					Email : &nbsp; {{i.email}}
+				</div>
+				{%endfor%}
+		</div>
+	</div>
+	<div class="page-header" style="color:white;">
+		<h2>
+		Items posted by You :
+		</h2>
+	</div>
+ 	{% for i in obj %}
+	<div class = "container">
+			<div class = "item_temp">
+				<img src = "{{ i.image.url }}" class = "item_image">
+				<h1>{{i.item_name}}</h1>
+				  <p class="title">Seller : {{i.username}}</p>
+				  <p>Price : {{i.price}}</p>
+				  <p>Description : {{i.description}}</p>
+				  <form>
+				  <input type="hidden" name="itemname" value="{{i.item_name}}">
+				  <button type ="submit" >Delete</button>					 
+				 </form>
+				  
+			</div>
+	</div>
+	{%endfor%}
+
+</body>
+
+</html>

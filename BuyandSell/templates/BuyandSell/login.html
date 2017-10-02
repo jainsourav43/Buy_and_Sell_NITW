@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login</title>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'BuyandSell/style.css' %}" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  {% csrf_token %}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+	<div class="fakenavbar">
+  <div class="container">
+    <h2>NITW Buy and SELL</h2>
+  </div>
+</div>
+
+  <div class="container"> 
+    <div class="jumbotron">
+      <div class="jumbotron-content">
+        <h1>Buy and Sell</h1>
+        <p class="jumbotron-xs-6">Please Login</p>
+        <form name="user-info" action="{% url 'BuyandSell:login_user'%}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+          <div class="form-group">
+            <label for="name">Username</label>
+            <input type="text" name="name" class="form-control" placeholder="Name">
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" name="password" class="form-control" placeholder="Password">
+          </div>
+          <input type="submit" value="submit" name="submit
+          ">
+        </form >
+      </div>
+      <!--<p class="img-credit">Image Dynamically Provided by <a href="http://lorempixel.com">LoremPixel</a></p>-->
+    </div>
+    
+    <!--<h2>Remaining Content...</h2>-->
+  </div>
+
+<div class="fakefooter">
+  
+</div>
+</body>
+</html>

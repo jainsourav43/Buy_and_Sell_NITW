@@ -1,0 +1,170 @@
+body {
+    font-family: "Lato", sans-serif;
+    background-color: black;
+}
+
+.x
+{
+  background-color: red;
+}
+
+.my-container
+{
+  width : 100%;
+  text-align: center;
+  margin-top: 125px;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: white;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+#main {
+    transition: margin-left .5s;
+    padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+#search_box
+{
+  margin:20px;
+  margin-left: 0px;
+  background-color: #EAE2E1;
+  width:60%;
+}
+
+.label_class_1
+{
+  font-size: 30px;
+  margin-top: 15px;
+}
+
+.item_temp
+{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: #f2efc9;
+    width : 75%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.item_image
+{
+  margin:5px;
+  background-color: #4e5868;
+  width:auto;
+  height:300px
+}
+
+.title {
+    color: grey;
+    font-size: 18px;
+}
+
+button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+a {
+    text-decoration: none;
+    font-size: 22px;
+    color: black;
+}
+
+button:hover, a:hover {
+  transition-duration: 0.5s;
+    background-color : green;
+}
+
+.card-container
+{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  background-color: black;
+    max-width : 300px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    border-radius: 5px;
+    height:auto;
+}
+
+.card-details
+{
+  width : 100%;
+  font-size: 18px;
+  background-color: #fcfcfc;
+  font-family: "Lato", sans-serif;
+  color:black;
+  padding: 3px;
+}
+
+.card-img
+{
+  max-width : inherit;
+  max-height: 300px;
+}
+
+.card-details:hover
+{
+  background-color: green;
+  color : white;
+  transition-duration: 0.5s;
+  box-shadow:0 10px 16px 0 rgba(0, 0, 0, 0.2);
+
+}
+
+.card-img:hover
+{
+  transition-duration: 0.5s;
+  box-shadow:0 10px 16px 0 rgba(0, 0, 0, 0.2);
+}

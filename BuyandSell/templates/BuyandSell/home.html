@@ -1,0 +1,70 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  {%load static%}
+  <title>Home Page</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../../static/BuyandSell/style.css">
+</head>
+
+<body>
+
+	<div class="block-container">
+		<div class = 'my-header'>
+		NIT Warangal Buy-Sell
+		</div>
+ 	</div> 
+ 	<div class='nav-div'>
+ 		<ul class="nav-bar">
+ 			<a href="{% url 'BuyandSell:profile' username %}" class = "nav-list-link"><li class = "nav-list-item move-left">Profile</li></a>
+ 			<a href="{% url 'BuyandSell:sell' username %}" class = "nav-list-link"><li class = "nav-list-item move-left">Sell</li></a>
+ 			<a href="#" class = "nav-list-link"><li class = "nav-list-item move-right">About</li></a>
+ 		</ul>
+ 	</div>
+
+	<!-- <div class = "container">
+		<form  action ="{% url 'BuyandSell: search'  data % }" role="search"  enctype="multipart/form-data">
+			{% csrf_token %}
+			<div class = "form-group">
+				<label for="search_box" class = "label_class_1">Search</label>
+				<input type="search_input" name= "data" class = "form-control" id="search_box" placeholder="Search">
+				<button type="search" class = "btn btn-default">Search</button>
+			</div>
+		</form>
+	</div>
+ -->	
+ 	{% for i in obj %}
+	<div class = "container">
+			<div class = "item_temp">
+				<div class = "item_image">
+					<img src = "{{ i.image.url }}"" style="border: solid 1px black;"/>
+				</div>
+				<h1>{{i.item_name}}</h1>
+				  <p class="title">Seller : {{i.username}}</p>
+				  <p>Price : {{i.price}}</p>
+				  <p>Description : {{i.description}}</p>
+				  <a href = "{% url 'BuyandSell:test' i.username%}">
+				  	<button>Contact Seller</button>
+				  </a>
+			</div>
+	</div>
+	{%endfor%}
+
+	<div class = "page-footer">
+	</div>
+
+	<div class="foot-div"></div>
+
+</body>
+
+</html>

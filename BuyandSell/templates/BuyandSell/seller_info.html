@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Seller Details</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../../static/BuyandSell/style.css">
+</head>
+<body>
+<div class = "my-container">
+	<div class = "style_prevu_kit card-container">
+			{% for i in obj %}
+			<img src = "{{i.image.url}}" class ="card-img" />
+			<div class = "card-details">
+				Name : &nbsp; {{i.name}}
+			</div>
+			<div class = "card-details">
+				Contact No. : &nbsp; {{i.contactno}}
+			</div>
+			<div class = "card-details">
+				Email : &nbsp; {{i.email}}
+			</div>
+			{%endfor%}
+	</div>
+</div>
+</body>
+</html>
