@@ -59,12 +59,11 @@ def sell(request,username):
 		username = request.POST['username']
 		description=request.POST['description']
 		image=request.FILES['image']
-	#	available =request.POST['available']
 		obj2=item(item_name = item_name , item_id= item_id ,price=price, username= username,description=description,image=image)
 		obj2.save()
 	else:
 		return render(request, 'BuyandSell/sell_form.html', {'username': username})
-	return render(request ,'BuyandSell/login.html')
+	return redirect('BuyandSell:items')
 
 
 def profile(request,username):
@@ -87,3 +86,6 @@ def items(request):
 	context['username'] = request.user.username
 	context['items'] = item.objects.all()
 	return render(request,'BuyandSell/home.html',context)
+
+def about(request):
+	return render(request,'BuyandSell/about.html')

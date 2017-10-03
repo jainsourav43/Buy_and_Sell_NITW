@@ -23,7 +23,5 @@ class item(models.Model):
 	image=models.FileField()
 	available =models.BooleanField(default=False)
 
-	
-
 
 
