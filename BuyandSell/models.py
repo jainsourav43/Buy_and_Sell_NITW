@@ -9,6 +9,9 @@ class UserProfile(models.Model):
 	email= models.EmailField()
 	contactno=models.CharField(max_length=10)
 	image=models.FileField(default='jon.jpg')
+	
+	def __str__(self):
+		return self.item_name
 
 
 class item(models.Model):
@@ -20,6 +23,7 @@ class item(models.Model):
 	image=models.FileField()
 	available =models.BooleanField(default=False)
 
+	
 
 
 

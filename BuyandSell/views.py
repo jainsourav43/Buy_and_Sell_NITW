@@ -4,10 +4,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.http import JsonResponse
-from django.shortcuts import render, get_object_or_404
-#from .models import UserProfile
-#from .models import Extras
-#from django.views.decorators.csrf import csrf_exempt
+from django.shortcuts import render, redirect , get_object_or_404
 from django.utils import six
 from itertools import product,chain
 from .models import item,UserProfile
@@ -29,41 +26,28 @@ def test(request,username):
 	print(username)
 	u = get_object_or_404(User, username=username)
 	me=UserProfile.objects.filter(user=u)
-	print(me[0].contactno)
-	print(me[0].user)
 	return render(request,'BuyandSell/seller_info.html',{'obj': me})
 
 
 def login_user(request):
-	if request.method == "POST":
-		request.session.set_test_cookie()
-		if request.session.test_cookie_worked():
-			print("victory")
-		request.session.delete_test_cookie()
-		username = request.POST['name']
-		password = request.POST['password']
-		user = authenticate(username=username , password=password)
-		login(request,user)
-		#request.session['username'] =username
-		#request.session['username'] =UserProfile.objects.get(user=request.user) 
-		if request.user.is_authenticated():
-			items = item.objects.all()
-			if user is not None:
-				if user.is_active:
-					request.session.set_expiry(3000)
-					print(username)
-					return render(request,'BuyandSell/home.html',{'username':username,'obj': items})
-				else:
-					return render(request, 'BuyandSell/login.html', {'error_message': 'Your account has been disabled'})
+	if not request.user.is_authenticated():
+		if request.method == "POST":
+			username = request.POST['name']
+			password = request.POST['password']
+			user = authenticate(username=username , password=password)
+			login(request,user)
+			if request.user.is_authenticated():
+				return redirect('BuyandSell:items')
 			else:
 				return render(request, 'BuyandSell/login.html', {'error_message': 'Invalid login'})
 		else:
 			return render(request, 'BuyandSell/login.html', {'error_message': 'Invalid login'})
 	else:
-		return render(request, 'BuyandSell/login.html', {'error_message': 'Invalid login'})
+		return redirect('BuyandSell:items')
 
-
-
+def logOut(request):
+	logout(request)
+	return redirect('BuyandSell:login_user')
 
 
 def sell(request,username):
@@ -95,3 +79,11 @@ def search(request):
 		item_name = request.POST['data']
 		result=item.objects.filter(item_name=item_name)
 		return render(request,'BuyandSell/search.html' ,{'obj' :result}) 
+		
+from django.contrib.auth.decorators import login_required
+@login_required(login_url='BuyandSell:login_user')
+def items(request):
+	context = {}
+	context['username'] = request.user.username
+	context['items'] = item.objects.all()
+	return render(request,'BuyandSell/home.html',context)

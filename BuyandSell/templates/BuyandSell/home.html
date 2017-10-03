@@ -29,6 +29,7 @@
  			<a href="{% url 'BuyandSell:profile' username %}" class = "nav-list-link"><li class = "nav-list-item move-left">Profile</li></a>
  			<a href="{% url 'BuyandSell:sell' username %}" class = "nav-list-link"><li class = "nav-list-item move-left">Sell</li></a>
  			<a href="#" class = "nav-list-link"><li class = "nav-list-item move-right">About</li></a>
+ 			<a href="{% url 'BuyandSell:logout'  %}" class = "nav-list-link"><li class = "nav-list-item move-right">Logout</li></a>
  		</ul>
  	</div>
 
@@ -43,7 +44,7 @@
 		</form>
 	</div>
  -->	
- 	{% for i in obj %}
+ 	{% for i in items %}
 	<div class = "container">
 			<div class = "item_temp">
 				<div class = "item_image">
