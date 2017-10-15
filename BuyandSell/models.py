@@ -10,8 +10,8 @@ class UserProfile(models.Model):
 	contactno=models.CharField(max_length=10)
 	image=models.FileField(default='jon.jpg')
 	
-	def __str__(self):
-		return self.item_name
+	# def __str__(self):
+	# 	return self.item_name
 
 
 class item(models.Model):

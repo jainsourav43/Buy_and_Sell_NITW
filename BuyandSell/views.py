@@ -89,3 +89,8 @@ def items(request):
 
 def about(request):
 	return render(request,'BuyandSell/about.html')
+
+def deleteme(request,username):
+	obj = item.objects.get(item_name=username)
+	obj.delete()
+	return redirect('BuyandSell:items')

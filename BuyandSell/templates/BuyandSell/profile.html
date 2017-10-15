@@ -49,10 +49,10 @@
 				  <p class="title">Seller : {{i.username}}</p>
 				  <p>Price : {{i.price}}</p>
 				  <p>Description : {{i.description}}</p>
-				  <form>
-				  <input type="hidden" name="itemname" value="{{i.item_name}}">
-				  <button type ="submit" >Delete</button>					 
-				 </form>
+				  <a href="{% url 'BuyandSell:deleteme' i.item_name %}">
+				  <button>Delete</button>
+				  </a>					 
+				
 				  
 			</div>
 	</div>
