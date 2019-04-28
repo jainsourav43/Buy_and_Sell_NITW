@@ -21,17 +21,10 @@
 
 	<div class="block-container">
 		<div class = 'my-header'>
-		NIT Warangal Buy-Sell
+		NIT Warangal Project Hub
 		</div>
  	</div> 
- 	<div class='nav-div'>
- 		<ul class="nav-bar">
- 			<a href="{% url 'BuyandSell:profile' username %}" class = "nav-list-link"><li class = "nav-list-item move-left">Profile</li></a>
- 			<a href="{% url 'BuyandSell:sell' username %}" class = "nav-list-link"><li class = "nav-list-item move-left">Sell</li></a>
- 			<a href="{% url 'BuyandSell:About'  %}" class = "nav-list-link"><li class = "nav-list-item move-right">About</li></a>
- 			<a href="{% url 'BuyandSell:logout'  %}" class = "nav-list-link"><li class = "nav-list-item move-right">Logout</li></a>
- 		</ul>
- 	</div>
+ 	
 
 	<!-- <div class = "container">
 		<form  action ="{% url 'BuyandSell: search'  data % }" role="search"  enctype="multipart/form-data">
@@ -48,15 +41,15 @@
 	<div class = "container">
 			<div class = "item_temp">
 				<div class = "item_image">
-					<img src = "{{ i.image.url }}"" style="border: solid 1px black;"/>
+					<img src = "{{ i.image.url }}" style="border: solid 1px black;"/>
 				</div>
-				<h1>{{i.item_name}}</h1>
-				  <p class="title">Seller : {{i.username}}</p>
-				  <p>Price : {{i.price}}</p>
+				<h1>Project Title: {{i.item_name}}</h1>
+				<p>Project Group Leader: {{i.item_id}}</p>
+				  <p>Guide : {{i.price}}</p>
 				  <p>Description : {{i.description}}</p>
-				  <a href = "{% url 'BuyandSell:test' i.username%}">
-				  	<button>Contact Seller</button>
-				  </a>
+				  <p> <a href="{{ i.report.url }}" target="_blank" class="btn btn-primary">Download The Report </a>
+				  </p>
+			
 			</div>
 	</div>
 	{%endfor%}

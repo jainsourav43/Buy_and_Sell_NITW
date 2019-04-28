@@ -50,20 +50,39 @@ def logOut(request):
 	return redirect('BuyandSell:login_user')
 
 
-def sell(request,username):
-	print("i am one man of army "+ username)
+def sell(request):
 	if request.method == "POST":
 		item_name=request.POST['name']
 		item_id=request.POST['id']
 		price = request.POST["price"]
-		username = request.POST['username']
 		description=request.POST['description']
 		image=request.FILES['image']
-		obj2=item(item_name = item_name , item_id= item_id ,price=price, username= username,description=description,image=image)
+		report=request.FILES['report']
+		obj2=item(item_name = item_name , item_id= item_id ,price=price,description=description,image=image,report=report)
 		obj2.save()
 	else:
-		return render(request, 'BuyandSell/sell_form.html', {'username': username})
+		return render(request, 'BuyandSell/sell_form.html')
 	return redirect('BuyandSell:items')
+
+
+def signUp(request):
+	if request.method == "POST":
+		name=request.POST['name']
+		email=request.POST['email']
+		username=request.POST['username']
+		password=request.POST['password']
+		user = User.objects.create_user(
+			username = username,
+			password = password,
+			email=email
+			)
+		user.save()
+		contactNumber=request.POST['contactno']
+		obj2=UserProfile(name=name,user=user,email=email,contactno=contactNumber)
+		obj2.save()
+	else:
+		return render(request,'BuyandSell/signUp.html')
+	return redirect('BuyandSell:login_user')
 
 
 def profile(request,username):
@@ -79,11 +98,11 @@ def search(request):
 		result=item.objects.filter(item_name=item_name)
 		return render(request,'BuyandSell/search.html' ,{'obj' :result}) 
 		
-from django.contrib.auth.decorators import login_required
-@login_required(login_url='BuyandSell:login_user')
+# from django.contrib.auth.decorators import login_required
+# @login_required(login_url='BuyandSell:login_user')
 def items(request):
 	context = {}
-	context['username'] = request.user.username
+	# context['username'] = request.user.username
 	context['items'] = item.objects.all()
 	return render(request,'BuyandSell/home.html',context)
 

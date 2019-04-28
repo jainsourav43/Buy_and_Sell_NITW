@@ -8,7 +8,7 @@ class UserProfile(models.Model):
 	user = models.OneToOneField(User,on_delete=models.CASCADE,primary_key=True)
 	email= models.EmailField()
 	contactno=models.CharField(max_length=10)
-	image=models.FileField(default='jon.jpg')
+	image=models.FileField(default='jon.png')
 	
 	# def __str__(self):
 	# 	return self.item_name
@@ -17,11 +17,13 @@ class UserProfile(models.Model):
 class item(models.Model):
 	item_name=models.CharField(max_length=100)
 	item_id=models.CharField(max_length=50)
-	price  = models.IntegerField(default =0)
+	price  = models.CharField(max_length=50)
 	username = models.CharField(max_length=50)
 	description =models.CharField(max_length=100)
 	image=models.FileField()
 	available =models.BooleanField(default=False)
+	report=models.FileField(null=True)
+
 
 
 

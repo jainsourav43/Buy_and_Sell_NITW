@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
+  <title>Project Hub Login</title>
   {% load static %}
   <link rel="stylesheet" type="text/css" href="{% static 'BuyandSell/style.css' %}" />
   <meta charset="utf-8">
@@ -15,14 +15,14 @@
 <body>
 	<div class="fakenavbar">
   <div class="container">
-    <h2>NITW Buy and SELL</h2>
+    <h2>NIT Warangal Project Hub </h2>
   </div>
 </div>
 
   <div class="container"> 
     <div class="jumbotron">
       <div class="jumbotron-content">
-        <h1>Buy and Sell</h1>
+        <h1>Project Hub</h1>
         <p class="jumbotron-xs-6">Please Login</p>
         <form name="user-info" action="{% url 'BuyandSell:login_user'%}" method="post" enctype="multipart/form-data">
         {% csrf_token %}
